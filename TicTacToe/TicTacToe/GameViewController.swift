@@ -18,7 +18,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
     }
     
     struct Player {
-        var playerName = "Player 1"
+        var playerName = ""
         var playerId = 1
         var isHisTurn = false
         var didHeWin = false
@@ -35,11 +35,16 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
         super.viewDidLoad()
         
         //Initial Setup
-        player1.playerName = "Player 1"
+        if player1.playerName == "" {
+            player1.playerName = "Player 1"
+        }
         player1.isHisTurn = true
+        titleLabel.text = player1.playerName+"'s Turn"
         player1.playerId = 1
         
-        player2.playerName = "Player 2"
+        if player2.playerName == "" {
+            player2.playerName = "Player 2"
+        }
         player2.isHisTurn = false
         player2.playerId = 2
         
@@ -103,7 +108,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
         }
         if player1.positions.count + player2.positions.count ==  Int(gameNumber)*Int(gameNumber){
             if !player1.didHeWin && !player2.didHeWin{
-                showAlertViewWith(message: "Match Tied")
+                showAlertViewWith(message: "It's a Tie")
             }
         }
     }
@@ -116,14 +121,14 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
     
     func updateView(){
         if player1.didHeWin {
-            showAlertViewWith(message: "Player 1 Won!!")
+            showAlertViewWith(message: player1.playerName+" Won!!")
         }else if player2.didHeWin {
-            showAlertViewWith(message: "Player 2 Won!!")
+            showAlertViewWith(message: player2.playerName+" Won!!")
         }else{
             if player1.isHisTurn {
-                titleLabel.text = "Player 1 Turn"
+                titleLabel.text = player1.playerName+"'s Turn"
             }else{
-                titleLabel.text = "Player 2 Turn"
+                titleLabel.text = player2.playerName+"'s Turn"
             }
         }
     }

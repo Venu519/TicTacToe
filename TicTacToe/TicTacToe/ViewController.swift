@@ -13,6 +13,8 @@ private let minGrid = 3
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var picketControl: UIPickerView!
+    @IBOutlet weak var p1TextField: UITextField!
+    @IBOutlet weak var p2TextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TicTacToe"
@@ -29,6 +31,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func startTheGame(_ sender: Any) {
         let controller = storyboard!.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         controller.gameNumber = CGFloat(minGrid)+CGFloat(picketControl.selectedRow(inComponent: 0))
+        if p1TextField.text != nil {
+            controller.player1.playerName = p1TextField.text!
+        }
+        if p2TextField.text != nil {
+            controller.player2.playerName = p2TextField.text!
+        }
+        
         navigationController?.pushViewController(controller, animated: true)
     }
     
