@@ -199,7 +199,7 @@
 				TargetAttributes = {
 					ABB795D91EE56EF8003C59B1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = ZBW69CQC36;
+						DevelopmentTeam = LX7W757Y2W;
 						ProvisioningStyle = Automatic;
 					};
 					ABB795ED1EE56EF8003C59B1 = {
@@ -425,8 +425,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZBW69CQC36;
+				DEVELOPMENT_TEAM = LX7W757Y2W;
 				INFOPLIST_FILE = TicTacToe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = venu.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,8 +439,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZBW69CQC36;
+				DEVELOPMENT_TEAM = LX7W757Y2W;
 				INFOPLIST_FILE = TicTacToe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = venu.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,6 +526,7 @@
 				ABB796041EE56EF8003C59B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABB796051EE56EF8003C59B1 /* Build configuration list for PBXNativeTarget "TicTacToeTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +535,7 @@
 				ABB796071EE56EF8003C59B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABB796081EE56EF8003C59B1 /* Build configuration list for PBXNativeTarget "TicTacToeUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +544,7 @@
 				ABB7960A1EE56EF8003C59B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

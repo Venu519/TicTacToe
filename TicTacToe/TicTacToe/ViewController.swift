@@ -20,6 +20,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.title = "TicTacToe"
         picketControl.dataSource = self
         picketControl.delegate = self
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnView(_:)))
+        self.view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,6 +31,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Dispose of any resources that can be recreated.
     }
 
+    func tappedOnView(_ sender: UITapGestureRecognizer) {
+        print("Please Help!")
+        p1TextField.resignFirstResponder()
+        p2TextField.resignFirstResponder()
+    }
+    
     @IBAction func startTheGame(_ sender: Any) {
         let controller = storyboard!.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         controller.gameNumber = CGFloat(minGrid)+CGFloat(picketControl.selectedRow(inComponent: 0))
@@ -48,10 +57,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return maxGrid - minGrid + 1
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return String(minGrid+row)
-//    }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = String(minGrid+row)
