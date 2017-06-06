@@ -17,13 +17,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var p2TextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = []
         self.title = "TicTacToe"
         picketControl.dataSource = self
         picketControl.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnView(_:)))
         self.view.addGestureRecognizer(tapGesture)
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +39,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         print("Please Help!")
         p1TextField.resignFirstResponder()
         p2TextField.resignFirstResponder()
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 64{
+                let offset = (self.view.frame.size.height - p2TextField.frame.origin.y - p2TextField.frame.size.height) - keyboardSize.height
+                self.view.frame.origin.y -= offset
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let offset = (self.view.frame.size.height - p2TextField.frame.origin.y - p2TextField.frame.size.height) - keyboardSize.height
+            if self.view.frame.origin.y != 64{
+                self.view.frame.origin.y += offset
+            }
+        }
     }
     
     @IBAction func startTheGame(_ sender: Any) {
