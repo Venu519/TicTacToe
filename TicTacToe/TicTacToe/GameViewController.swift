@@ -68,7 +68,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        print(indexPath.section , indexPath.row)
         let cell  = gameCollectionView.dequeueReusableCell(withReuseIdentifier: gameReuseIdentifier, for: indexPath) as! GameCollectionViewCell
         cell.layer.borderWidth = 2.0
         cell.layer.borderColor = UIColor.white.cgColor
@@ -115,11 +114,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
         return CGSize(width: (collectionView.bounds.width - 10) / gameNumber, height: (collectionView.bounds.size.height - 10) / gameNumber)
     }
     
-    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        print("hkj")
-        return false
-    }
-    
     func updateView(){
         if player1.didHeWin {
             showAlertViewWith(message: "Player 1 Won!!")
@@ -141,7 +135,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
         //Horizontal Check
         for column in 0...Int(gameNumber-1){
             for row in 0...Int(gameNumber-1) {
-                print(IndexPath.init(row: row, section: column))
                 let cell = collectionVW.cellForItem(at: IndexPath.init(row: row, section: column)) as! GameCollectionViewCell
                 if cell.playerId != player1.playerId{
                     resultP1 = false
@@ -150,7 +143,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
                     resultP2 = false
                 }
             }
-            print(resultP1, resultP2)
             if resultP1{
                 player1.didHeWin = true
                 return
@@ -166,7 +158,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
         //Vertical Check
         for row in 0...Int(gameNumber-1){
             for column in 0...Int(gameNumber-1) {
-                print(IndexPath.init(row: row, section: column))
                 let cell = collectionVW.cellForItem(at: IndexPath.init(row: row, section: column)) as! GameCollectionViewCell
                 if cell.playerId != player1.playerId{
                     resultP1 = false
@@ -175,7 +166,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
                     resultP2 = false
                 }
             }
-            print(resultP1, resultP2)
             if resultP1{
                 player1.didHeWin = true
                 return
@@ -198,7 +188,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
                 resultP2 = false
             }
         }
-        print(resultP1, resultP2)
         if resultP1{
             player1.didHeWin = true
             return
@@ -220,7 +209,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource,UICollect
                 resultP2 = false
             }
         }
-        print(resultP1, resultP2)
         if resultP1{
             player1.didHeWin = true
             return
